@@ -4,8 +4,11 @@ This package allows you to implement the Repositories design pattern in your lar
 
 ##Instalation
 Its simply to install, just run:
+
 	composer require andersonef/repositories-pattern
+	
 After that, you must only edit you Kernel.php file, Its located at: **app/Console/Kernel.php** and add to the $commands array the following code:
+
 	'Andersonef\Repositories\Console\Commands\RepositoryCommand',
 
 ##Service Provider
@@ -117,7 +120,7 @@ Your repository have some inherited methods from RepositoryAbstract class. They 
   Lets think you must implement a search field on your blog, and must bring all your posts that have some text like $query variable.
   You can simply do:
   
-      $result = $postService->findByQuery(new FindUsingLikeCriteria($request->get('textQuery')))->paginate(10);
+      $result = $postService->findByCriteria(new FindUsingLikeCriteria($request->get('textQuery')))->paginate(10);
   
   This will returns to you a collection of posts that has title, or content, or author like the text inside 'textQuery' request attribute.
   You can create your own criterias, its really simple to do it:
