@@ -113,6 +113,7 @@ Your repository have some inherited methods from RepositoryAbstract class. They 
   
   ##Service magic methods:
   You can call any repository methods directly from your service. This way: 
+  
       $yourservice->repositoryMethod(); // this will be the same as: $yourservice->getRepository()->repositoryMethod();
   
   ##Using Criterias:
