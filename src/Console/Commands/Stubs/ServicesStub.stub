@@ -5,7 +5,7 @@ use Illuminate\Database\DatabaseManager;
 use DummyRepository;
 
 /**
- * Serviço que gerencia todas as regras de negócio e lógica de operação da entidade DummySmallEntity.
+ * Service layer that will applies all application rules to work with DummySmallEntity class.
  *
  * Class DummyClass
  * @package DummyNamespace
@@ -13,7 +13,7 @@ use DummyRepository;
 class DummyClass extends ServiceAbstract{
 
     /**
-     * Construtor que recebe uma nova instância de DummySmallRepository e do DatabaseManager.
+     * This constructor will receive by dependency injection a instance of DummySmallRepository and DatabaseManager.
      *
      * @param DummySmallRepository $repository
      * @param DatabaseManager $db

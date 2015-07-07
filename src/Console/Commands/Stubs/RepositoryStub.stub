@@ -4,7 +4,7 @@ use Andersonef\Repositories\Abstracts\RepositoryAbstract;
 use DummyEntity;
 
 /**
- * Repositório de funções para a classe DummySmallEntity.
+ * Data repository to work with entity DummySmallEntity.
  *
  * Class DummyClass
  * @package DummyNamespace
@@ -14,7 +14,7 @@ class DummyClass extends RepositoryAbstract{
 
     public function entity()
     {
-        return 'DummyEntity';
+        return DummyEntity::class;
     }
 
 }
