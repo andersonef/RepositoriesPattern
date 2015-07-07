@@ -1,0 +1,28 @@
+<?php namespace DummyNamespace;
+
+use Andersonef\Repositories\Abstracts\ServiceAbstract;
+use Illuminate\Database\DatabaseManager;
+use DummyRepository;
+
+/**
+ * Serviço que gerencia todas as regras de negócio e lógica de operação da entidade DummySmallEntity.
+ *
+ * Class DummyClass
+ * @package DummyNamespace
+ */
+class DummyClass extends ServiceAbstract{
+
+    /**
+     * Construtor que recebe uma nova instância de DummySmallRepository e do DatabaseManager.
+     *
+     * @param DummySmallRepository $repository
+     * @param DatabaseManager $db
+     */
+    public function __construct(DummySmallRepository $repository, DatabaseManager $db)
+    {
+        parent::__construct($repository, $db);
+    }
+
+
+
+}

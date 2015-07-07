@@ -1,0 +1,45 @@
+{
+  "name": "andersonef/repositories-pattern",
+  "description": "Laravel Repositories Pattern Implementation",
+  "keywords": [
+    "laravel",
+    "repository",
+    "repositories",
+    "eloquent",
+    "database"
+  ],
+  "licence": "MIT",
+  "authors": [
+    {
+      "name": "Anderson Nunes",
+      "email": "anderson.nuneseth@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "laravel/framework": "5.*"
+  },
+  "autoload": {
+    "classmap" : [
+      "src/Abstracts",
+      "src/Contracts",
+      "src/Criterias",
+      "src/Exceptions"
+    ],
+    "psr-4": {
+      "Andersonef\\Repositories\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Andersonef\\Tests\\Repositories\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

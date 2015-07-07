@@ -1,0 +1,20 @@
+<?php namespace DummyNamespace;
+
+use Andersonef\Repositories\Abstracts\RepositoryAbstract;
+use DummyEntity;
+
+/**
+ * Repositório de funções para a classe DummySmallEntity.
+ *
+ * Class DummyClass
+ * @package DummyNamespace
+ */
+class DummyClass extends RepositoryAbstract{
+
+
+    public function entity()
+    {
+        return 'DummyEntity';
+    }
+
+}
