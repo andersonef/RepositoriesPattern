@@ -4,8 +4,11 @@ This package allows you to implement the Repositories design pattern in your lar
 
 ##Instalation
 Its simply to install, just run:
+
 	composer require andersonef/repositories-pattern
+	
 After that, you must only edit you Kernel.php file, Its located at: **app/Console/Kernel.php** and add to the $commands array the following code:
+
 	'Andersonef\Repositories\Console\Commands\RepositoryCommand',
 
 ##Service Provider
