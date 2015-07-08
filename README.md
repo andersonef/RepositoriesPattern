@@ -11,7 +11,7 @@ Its simply to install, just run:
 ##Service Provider
 You must register this package service provider at you **config/app.php** file. Just add this line at your $providers array:
 
-	\Andersonef\Repositories\Providers\RepositoryProvider::class,
+	Andersonef\Repositories\Providers\RepositoryProvider::class,
 
 ##Creating your Repositories and Services:
 At your console, enter the following command:
