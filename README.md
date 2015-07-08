@@ -112,10 +112,11 @@ Your repository have some inherited methods from RepositoryAbstract class. They 
   - **update(array $data, $id)**: Open a transaction and try to update the instance using $data array.
   - **delete($id)**: OPen a transaction and try to delete an instance of specified entity.
   
-  ##Service magic methods:
-  You can call any repository methods directly from your service. This way: 
+  ##Magic Methods:
+  For convenience, we can use magic methods on both service and repository classes: 
   
       $yourservice->repositoryMethod(); // this will be the same as: $yourservice->getRepository()->repositoryMethod();
+      $yourRepository->entityMethod(); / this will be the same as: $tyourRepository->getEntity()->entityMethod();
   
   ##Using Criterias:
   You can implement criteria to reuse your application query rules. This package brings you one default criteria, the **FindUsingLikeCriteria**.
