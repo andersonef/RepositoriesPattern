@@ -9,7 +9,7 @@ Its simply to install, just run:
 	
 After that, you must only edit you Kernel.php file, Its located at: **app/Console/Kernel.php** and add to the $commands array the following code:
 
-	'\Andersonef\Repositories\Console\Commands\RepositoryCommand',
+	\Andersonef\Repositories\Console\Commands\RepositoryCommand::class,
 
 ##Service Provider
 This package doesn't has a service provider. In the laravel 5.1, the class doesn't need to be registered for container inject it, this way the class must only be loaded and the dependency injection container will try to inject it on who need it.
