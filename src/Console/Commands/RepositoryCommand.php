@@ -118,7 +118,7 @@ class RepositoryCommand extends GeneratorCommand
 
     protected function renderRepositoryClass()
     {
-        $str = $this->files->get(__DIR__.'/stubs/RepositoryStub.stub');
+        $str = $this->files->get(__DIR__.'/Stubs/RepositoryStub.stub');
         $namespace = $this->getAppNamespace().'Repositories/'.$this->argument('name');
         $c = explode('/', $namespace);
         $classe = array_pop($c);
@@ -140,9 +140,10 @@ class RepositoryCommand extends GeneratorCommand
     }
 
 
+
     protected function renderServiceClass()
     {
-        $str = $this->files->get(__DIR__.'/stubs/ServicesStub.stub');
+        $str = $this->files->get(__DIR__.'/Stubs/ServicesStub.stub');
         $namespace = $this->getAppNamespace().'Services/'.$this->argument('name').'Service';
         $c = explode('/', $namespace);
         $classe = array_pop($c);
