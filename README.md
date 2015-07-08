@@ -15,7 +15,9 @@ You must register this package service provider at you **config/app.php** file. 
 
 ##Creating your Repositories and Services:
 At your console, enter the following command:
+
 	php artisan make:repository BlogNamespace/Post --entity=Models/Post
+	
 This will create the following file structure in your app directory:
 
 app/ 
