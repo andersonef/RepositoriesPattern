@@ -19,6 +19,7 @@ class RepositoryProvider extends ServiceProvider
         //
     }
 
+
     /**
      * Register the application services.
      *
