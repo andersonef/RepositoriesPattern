@@ -18,8 +18,8 @@ class RepositoryCommand extends GeneratorCommand
      * @var string
      */
     protected $signature = 'make:repository
-        {name : Repository name. ex: ContactRepository (always ending with the Repository word)}
-        {--entity=: Which database entity this repository will use?.}
+        {name : Repository name. ex: Contact. This command will create a ContactRepository and a ContactService inside its respective folders}
+        {--entity=: Which database entity this repository will use? Write it using its full namespace.}
     ';
 
     /**
