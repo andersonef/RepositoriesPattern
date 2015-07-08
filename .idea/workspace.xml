@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="286830cb-0624-4db4-8aef-040063560d78" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/Repositories.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Repositories.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +60,8 @@
       <file leaf-file-name="RepositoryCommand.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Console/Commands/RepositoryCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6306818" vertical-offset="1923" max-vertical-offset="2640">
-              <caret line="145" column="41" selection-start-line="145" selection-start-column="41" selection-end-line="145" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.67329544" vertical-offset="1923" max-vertical-offset="2640">
+              <caret line="146" column="80" selection-start-line="146" selection-start-column="80" selection-end-line="146" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -339,7 +332,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436313749503</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Deletei .idea">
+      <created>1436313811541</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1436313811541</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -390,7 +389,8 @@
     <MESSAGE value="rue" />
     <MESSAGE value="git tag maroto" />
     <MESSAGE value="Correção no Stubs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correção no Stubs" />
+    <MESSAGE value="Deletei .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deletei .idea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -567,8 +567,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Console/Commands/RepositoryCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6306818" vertical-offset="1923" max-vertical-offset="2640">
-          <caret line="145" column="41" selection-start-line="145" selection-start-column="41" selection-end-line="145" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.67329544" vertical-offset="1923" max-vertical-offset="2640">
+          <caret line="146" column="80" selection-start-line="146" selection-start-column="80" selection-end-line="146" selection-end-column="80" />
           <folding />
         </state>
       </provider>
