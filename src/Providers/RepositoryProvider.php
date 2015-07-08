@@ -1,11 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ansilva
- * Date: 08/07/2015
- * Time: 09:15
- */
+namespace Andersonef\Repositories\Providers;
 
-class RepositoryProvider {
+use \Illuminate\Support\ServiceProvider;
 
+class RepositoryProvider extends ServiceProvider
+{
+
+    protected $commands = [
+        \Andersonef\Repositories\Console\Commands\RepositoryCommand::class,
+    ];
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->commands($this->commands);
+    }
 }
