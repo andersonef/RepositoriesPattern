@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Repository Pattern implementation for Laravel 5 Projects by andersonef</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Repository Pattern implementation for Laravel 5 Projects</h1>
+        <h2>Implement the Repository Pattern, a Service Layer and Criterias in your Laravel 5 project with just one line of code!</h2>
+        <a href="https://github.com/andersonef/RepositoriesPattern" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a id="repositories-pattern-on-laravel-51-or-superior" class="anchor" href="#repositories-pattern-on-laravel-51-or-superior" aria-hidden="true"><span class="octicon octicon-link"></span></a>Repositories Pattern on Laravel 5.1 or superior</h2>
+
+<p>This package allows you to implement the Repositories design pattern in your laravel application. It makes easy to use a service layer too.</p>
+
+<h2>
+<a id="instalation" class="anchor" href="#instalation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalation</h2>
+
+<p>Its simply to install, just run:</p>
+
+<pre><code>composer require andersonef/repositories-pattern
+</code></pre>
+
+<h2>
+<a id="service-provider" class="anchor" href="#service-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Provider</h2>
+
+<p>You must register this package service provider at you <strong>config/app.php</strong> file. Just add this line at your $providers array:</p>
+
+<pre><code>Andersonef\Repositories\Providers\RepositoryProvider::class,
+</code></pre>
+
+<h2>
+<a id="creating-your-repositories-and-services" class="anchor" href="#creating-your-repositories-and-services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating your Repositories and Services:</h2>
+
+<p>At your console, enter the following command:</p>
+
+<pre><code>php artisan make:repository BlogNamespace/Post --entity=Models/Post
+</code></pre>
+
+<p>This will create the following file structure in your app directory:</p>
+
+<p>app/ </p>
+
+<pre><code>Repositories/
+
+    BlogNamespace/
+
+        PostRepository.php
+
+Services/
+
+    BlogNamespace/
+
+        PostService.php
+</code></pre>
+
+<h2>
+<a id="repository-file-structure" class="anchor" href="#repository-file-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Repository file structure</h2>
+
+<p>Your repository file will be created with the following code:</p>
+
+<pre><code>&lt;?php namespace Inet\Repositories\BlogNamespace;
+
+use Andersonef\Repositories\Abstracts\RepositoryAbstract;
+use \Post;
+
+/**
+ * Data repository to work with entity Post.
+ *
+ * Class PostRepository
+ * @package Inet\Repositories\BlogNamespace
+ */
+class PostRepository extends RepositoryAbstract{
+
+
+    public function entity()
+    {
+        return \Post::class;
+    }
+
+}
+</code></pre>
+
+<h2>
+<a id="service-file-structure" class="anchor" href="#service-file-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service file structure</h2>
+
+<p>And your PostService.php file wil be created with the following code:</p>
+
+<pre><code>&lt;?php namespace Inet\Services\BlogNamespace;
+
+  use Andersonef\Repositories\Abstracts\ServiceAbstract;
+  use Illuminate\Database\DatabaseManager;
+  use \Inet\Repositories\BlogNamespace\PostRepository;
+
+  /**
+   * Service layer that will applies all application rules to work with Post class.
+   *
+   * Class PostService
+   * @package Inet\Services\BlogNamespace
+   */
+  class PostService extends ServiceAbstract{
+
+      /**
+       * This constructor will receive by dependency injection a instance of PostRepository and DatabaseManager.
+       *
+       * @param PostRepository $repository
+       * @param DatabaseManager $db
+       */
+      public function __construct(PostRepository $repository, DatabaseManager $db)
+      {
+          parent::__construct($repository, $db);
+      }
+
+
+
+  }
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Using this pattern you wil be able to separate your application rules from your data access rules and you will be able to reuse your code in a very simple way.
+Imagine that you have an app that users can register using the public pages AND the admin register users using the admin panel. The rules to register an user are the same on both cases, but the admin panel must require an admin logged user AND has an option to isent the new user to pay his subscription value.
+In the old way you would have to replicate the code or use a laravel command to isolate the user registration rules.
+Using the service layer and the repository pattern you will write the user registration rules inside the UserService and on both controllers (public page registration and admin panel) you would call the $userService-&gt;create($request-&gt;all()).
+If you must implement an api to save users from an android interface, you can reuse your service layer and just change the way your controller respond to the client.</p>
+
+<h2>
+<a id="repository-inherited-methods" class="anchor" href="#repository-inherited-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Repository Inherited Methods:</h2>
+
+<p>Your repository have some inherited methods from RepositoryAbstract class. They are:</p>
+
+<ul>
+<li>
+<strong>create(array $data);</strong>: Tries to create a new instance of your specified entity. <strong>WARNING: Your entity must declare the $fillable field</strong>
+</li>
+<li>
+<strong>update(array $data, $id);</strong>: Update specified entity.</li>
+<li>
+<strong>delete($id);</strong>: Delete the specified entity</li>
+<li>
+<strong>find($id, array $columns = ['*']);</strong>: Find an instance of specified entity by id</li>
+<li>
+<p><strong>findBy(array $fields, array $columns = ['*']);</strong>: Find a collection of specified instances using the fields (see phpdocs).</p>
+
+<h2>
+<a id="service-inherited-methods" class="anchor" href="#service-inherited-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Inherited Methods:</h2>
+
+<p>Your service will be similar to your repository. The main difference is that your service layer must implement application logic, so it have transaction in its methods:</p>
+
+<ul>
+<li>
+<strong>create(array $data)</strong>: Open a transaction and try to create an instance using the $data array. You can override it</li>
+<li>
+<strong>update(array $data, $id)</strong>: Open a transaction and try to update the instance using $data array.</li>
+<li>
+<strong>delete($id)</strong>: OPen a transaction and try to delete an instance of specified entity.</li>
+</ul>
+
+<h2>
+<a id="magic-methods" class="anchor" href="#magic-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Magic Methods:</h2>
+
+<p>For convenience, we can use magic methods on both service and repository classes: </p>
+
+<pre><code>$yourservice-&gt;repositoryMethod(); // this will be the same as: $yourservice-&gt;getRepository()-&gt;repositoryMethod();
+$yourRepository-&gt;entityMethod(); / this will be the same as: $tyourRepository-&gt;getEntity()-&gt;entityMethod();
+</code></pre>
+
+<h2>
+<a id="using-criterias" class="anchor" href="#using-criterias" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Criterias:</h2>
+
+<p>You can implement criteria to reuse your application query rules. This package brings you one default criteria, the <strong>FindUsingLikeCriteria</strong>.
+Lets think you must implement a search field on your blog, and must bring all your posts that have some text like $query variable.
+You can simply do:</p>
+
+<pre><code>$result = $postService-&gt;findByCriteria(new FindUsingLikeCriteria($request-&gt;get('textQuery')))-&gt;paginate(10);
+</code></pre>
+
+<p>This will returns to you a collection of posts that has title, or content, or author like the text inside 'textQuery' request attribute.
+You can create your own criterias, its really simple to do it:</p>
+
+<h2>
+<a id="creating-your-own-criteria" class="anchor" href="#creating-your-own-criteria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating your own criteria</h2>
+
+<p>This wil be your custom criteria:</p>
+
+<pre><code>&lt;?php namespace Andersonef\Repositories\Criteria;
+
+use Andersonef\Repositories\Abstracts\CriteriaAbstract;
+use Andersonef\Repositories\Contracts\RepositoryContract;
+use Illuminate\Database\Eloquent\Model;
+
+class UnreadRecentPostsCriteria extends CriteriaAbstract{
+
+  public function apply(Model $model, RepositoryContract $repository)
+  {
+      $model
+      -&gt;where('created_at','&gt;',(new \DateTime())-&gt;sub(new \DateInterval('P3D'))-&gt;format('Y-m-d'))
+      -&gt;where('status_read', '=', 1);
+      return $model;
+  }
+}
+</code></pre>
+</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/andersonef/RepositoriesPattern/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/andersonef/RepositoriesPattern/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/andersonef/RepositoriesPattern"></a> is maintained by <a href="https://github.com/andersonef">andersonef</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
