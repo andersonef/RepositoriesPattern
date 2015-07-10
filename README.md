@@ -137,21 +137,21 @@ $result = $postService->findByCriteria(new FindUsingLikeCriteria($request->get('
   ##Creating your own criteria
   This wil be your custom criteria:
   
-      ```php 
-      namespace Andersonef\Repositories\Criteria;
-      
-      use Andersonef\Repositories\Abstracts\CriteriaAbstract;
-      use Andersonef\Repositories\Contracts\RepositoryContract;
-      use Illuminate\Database\Eloquent\Model;
-    
-      class UnreadRecentPostsCriteria extends CriteriaAbstract{
-    
-        public function apply(Model $model, RepositoryContract $repository)
-        {
-            $model
-            ->where('created_at','>',(new \DateTime())->sub(new \DateInterval('P3D'))->format('Y-m-d'))
-            ->where('status_read', '=', 1);
-            return $model;
-        }
-      }
-      ```
+```php 
+namespace Andersonef\Repositories\Criteria;
+
+use Andersonef\Repositories\Abstracts\CriteriaAbstract;
+use Andersonef\Repositories\Contracts\RepositoryContract;
+use Illuminate\Database\Eloquent\Model;
+
+class UnreadRecentPostsCriteria extends CriteriaAbstract{
+
+public function apply(Model $model, RepositoryContract $repository)
+{
+    $model
+    ->where('created_at','>',(new \DateTime())->sub(new \DateInterval('P3D'))->format('Y-m-d'))
+    ->where('status_read', '=', 1);
+    return $model;
+}
+}
+```
