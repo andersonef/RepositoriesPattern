@@ -155,3 +155,7 @@ public function apply(Model $model, RepositoryContract $repository)
 }
 }
 ```
+
+##Credits
+This package has been created based on this other: https://github.com/prettus/l5-repository
+I just implement a few more options and make some fews changes to turn it better for the company I work.
