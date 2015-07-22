@@ -114,7 +114,6 @@ class ServiceAbstract implements ServiceContract {
 
     public function __call($method, $arguments = [])
     {
-        $rep = $this->getRepository();
         return call_user_func_array([$this->Repository, $method], $arguments);
     }
 
