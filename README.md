@@ -11,7 +11,9 @@ Its simply to install, just run:
 ##Service Provider
 You must register this package service provider at you **config/app.php** file. Just add this line at your $providers array:
 
-	Andersonef\Repositories\Providers\RepositoryProvider::class,
+```php
+Andersonef\Repositories\Providers\RepositoryProvider::class,
+```
 
 ##Creating your Repositories and Services:
 At your console, enter the following command:
@@ -38,58 +40,59 @@ app/
 ##Repository file structure
 Your repository file will be created with the following code:
 	 
-    <?php namespace Inet\Repositories\BlogNamespace;
-    
-    use Andersonef\Repositories\Abstracts\RepositoryAbstract;
-    use \Post;
-    
-    /**
-     * Data repository to work with entity Post.
-     *
-     * Class PostRepository
-     * @package Inet\Repositories\BlogNamespace
-     */
-    class PostRepository extends RepositoryAbstract{
-    
-    
-        public function entity()
-        {
-            return \Post::class;
-        }
-    
-    }
+```php
+namespace Inet\Repositories\BlogNamespace;
+
+use Andersonef\Repositories\Abstracts\RepositoryAbstract;
+use \Post;
+
+/**
+* Data repository to work with entity Post.
+*
+* Class PostRepository
+* @package Inet\Repositories\BlogNamespace
+*/
+class PostRepository extends RepositoryAbstract{
+
+
+public function entity()
+{
+    return \Post::class;
+}
+
+}
+```
 
 ##Service file structure
 And your PostService.php file wil be created with the following code:
 
-    <?php namespace Inet\Services\BlogNamespace;
+```php
+namespace Inet\Services\BlogNamespace;
 
-      use Andersonef\Repositories\Abstracts\ServiceAbstract;
-      use Illuminate\Database\DatabaseManager;
-      use \Inet\Repositories\BlogNamespace\PostRepository;
-      
-      /**
-       * Service layer that will applies all application rules to work with Post class.
-       *
-       * Class PostService
-       * @package Inet\Services\BlogNamespace
-       */
-      class PostService extends ServiceAbstract{
-      
-          /**
-           * This constructor will receive by dependency injection a instance of PostRepository and DatabaseManager.
-           *
-           * @param PostRepository $repository
-           * @param DatabaseManager $db
-           */
-          public function __construct(PostRepository $repository, DatabaseManager $db)
-          {
-              parent::__construct($repository, $db);
-          }
-      
-      
-      
-      }
+use Andersonef\Repositories\Abstracts\ServiceAbstract;
+use Illuminate\Database\DatabaseManager;
+use \Inet\Repositories\BlogNamespace\PostRepository;
+
+/**
+* Service layer that will applies all application rules to work with Post class.
+*
+* Class PostService
+* @package Inet\Services\BlogNamespace
+*/
+class PostService extends ServiceAbstract{
+
+  /**
+   * This constructor will receive by dependency injection a instance of PostRepository and DatabaseManager.
+   *
+   * @param PostRepository $repository
+   * @param DatabaseManager $db
+   */
+  public function __construct(PostRepository $repository, DatabaseManager $db)
+  {
+      parent::__construct($repository, $db);
+  }
+}
+```
 
 ##Usage
 Using this pattern you wil be able to separate your application rules from your data access rules and you will be able to reuse your code in a very simple way.
@@ -115,34 +118,44 @@ Your repository have some inherited methods from RepositoryAbstract class. They 
   ##Magic Methods:
   For convenience, we can use magic methods on both service and repository classes: 
   
-      $yourservice->repositoryMethod(); // this will be the same as: $yourservice->getRepository()->repositoryMethod();
-      $yourRepository->entityMethod(); / this will be the same as: $tyourRepository->getEntity()->entityMethod();
+```php
+$yourservice->repositoryMethod(); // this will be the same as: $yourservice->getRepository()->repositoryMethod();
+$yourRepository->entityMethod(); // this will be the same as: $tyourRepository->getEntity()->entityMethod();
+```
   
   ##Using Criterias:
   You can implement criteria to reuse your application query rules. This package brings you one default criteria, the **FindUsingLikeCriteria**.
   Lets think you must implement a search field on your blog, and must bring all your posts that have some text like $query variable.
   You can simply do:
   
-      $result = $postService->findByCriteria(new FindUsingLikeCriteria($request->get('textQuery')))->paginate(10);
+```php
+$result = $postService->findByCriteria(new FindUsingLikeCriteria($request->get('textQuery')))->paginate(10);
+```
   
   This will returns to you a collection of posts that has title, or content, or author like the text inside 'textQuery' request attribute.
   You can create your own criterias, its really simple to do it:
   ##Creating your own criteria
   This wil be your custom criteria:
   
-      <?php namespace Andersonef\Repositories\Criteria;
-      
-      use Andersonef\Repositories\Abstracts\CriteriaAbstract;
-      use Andersonef\Repositories\Contracts\RepositoryContract;
-      use Illuminate\Database\Eloquent\Model;
-    
-      class UnreadRecentPostsCriteria extends CriteriaAbstract{
-    
-        public function apply(Model $model, RepositoryContract $repository)
-        {
-            $model
-            ->where('created_at','>',(new \DateTime())->sub(new \DateInterval('P3D'))->format('Y-m-d'))
-            ->where('status_read', '=', 1);
-            return $model;
-        }
-      }
+```php 
+namespace Andersonef\Repositories\Criteria;
+
+use Andersonef\Repositories\Abstracts\CriteriaAbstract;
+use Andersonef\Repositories\Contracts\RepositoryContract;
+use Illuminate\Database\Eloquent\Model;
+
+class UnreadRecentPostsCriteria extends CriteriaAbstract{
+
+public function apply(Model $model, RepositoryContract $repository)
+{
+    $model
+    ->where('created_at','>',(new \DateTime())->sub(new \DateInterval('P3D'))->format('Y-m-d'))
+    ->where('status_read', '=', 1);
+    return $model;
+}
+}
+```
+
+##Credits
+This package has been created based on this other: https://github.com/prettus/l5-repository
+I just implement a few more options and make some fews changes to turn it better for the company I work.
