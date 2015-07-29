@@ -193,4 +193,5 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
         return call_user_func_array([$this->entity, $method], $arguments);
     }
 
+
 }
