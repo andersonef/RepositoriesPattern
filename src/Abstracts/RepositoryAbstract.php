@@ -136,6 +136,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function create(array $data)
     {
+        $this->entity = app($this->entity());
         return $this->entity->create($data);
     }
 
@@ -145,6 +146,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function update(array $data, $id)
     {
+        $this->entity = app($this->entity());
         $this->entity->find($id)->update($data);
     }
 
@@ -153,6 +155,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function delete($id)
     {
+        $this->entity = app($this->entity());
         $this->entity->destroy($id);
     }
 
