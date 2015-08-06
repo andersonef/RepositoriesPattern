@@ -177,6 +177,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function findBy($fields, $columns = ['*'])
     {
+        $this->entity = $this->entity->newQuery();
         foreach($fields as $field => $value)
         {
             $this->entity = $this->entity->where($field, '=', $value);
