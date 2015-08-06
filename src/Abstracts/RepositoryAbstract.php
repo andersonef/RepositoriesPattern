@@ -183,6 +183,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
             $entity->where($field, '=', $value);
         }
         return $entity;
+
     }
 
 
