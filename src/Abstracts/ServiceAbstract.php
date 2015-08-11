@@ -87,8 +87,9 @@ class ServiceAbstract implements ServiceContract {
     {
         try{
             $this->db->beginTransaction();
-            $this->Repository->update($data, $id);
+            $retorno = $this->Repository->update($data, $id);
             $this->db->commit();
+            return $retorno;
         }catch(\Exception $e){
             $this->db->rollback();
             throw $e;
