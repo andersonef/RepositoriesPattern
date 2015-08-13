@@ -146,9 +146,9 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
      */
     public function update(array $data, $id)
     {
-        $this->entity = app($this->entity());
-        $this->entity->find($id)->update($data);
-        return $this->entity;
+        $this->entity = app($this->entity())->find($id);
+        $this->entity->update($data);
+        return app($this->entity())->find($id);
     }
 
     /** Delete the entity on database
