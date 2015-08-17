@@ -18,7 +18,12 @@ Andersonef\Repositories\Providers\RepositoryProvider::class,
 ##Creating your Repositories and Services:
 At your console, enter the following command:
 
-	php artisan make:repository BlogNamespace/Post --entity=Models/Post
+	php artisan make:repository BlogNamespace/Post --entity=App/Models/Post
+	
+Remember to use the complete namespace to your entity path. If your are using a custom namespace, use: 
+
+	php artisan make:repository BlogNamespace/Post --entity=CustomNamespace/Models/Post
+	
 	
 This will create the following file structure in your app directory:
 
