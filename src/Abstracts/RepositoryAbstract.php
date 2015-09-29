@@ -117,7 +117,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
     public function all(array $columns = ['*'])
     {
         $this->applyCriteria();
-        return $this->entity->all($columns);
+        return $this->entity->get($columns);
     }
 
     /** Paginates all objects from database, using the criterias on the stack.
