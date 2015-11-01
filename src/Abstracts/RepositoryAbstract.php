@@ -161,7 +161,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
     }
 
     /** Find an entity using its primary key
-     * @param $id
+     * @param $id.c
      * @param array $columns
      * @return Model
      */

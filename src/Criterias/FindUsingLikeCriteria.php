@@ -45,7 +45,10 @@ class FindUsingLikeCriteria extends CriteriaAbstract{
         $query = $model->where(function($q) use($fields, $query){
             foreach($fields as $i => $field)
             {
-                if($i == 0) $q->where($field, 'like', $query);
+                if($i == 0){
+                    $q->where($field, 'like', $query);
+                    continue;
+                }
                 $q->orWhere($field, 'like', $query);
             }
         });
