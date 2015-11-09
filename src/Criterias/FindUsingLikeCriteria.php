@@ -6,7 +6,7 @@
  * Time: 16:31
  */
 
-namespace Andersonef\Repositories\Criteria;
+namespace Andersonef\Repositories\Criterias;
 
 
 use Andersonef\Repositories\Abstracts\CriteriaAbstract;
