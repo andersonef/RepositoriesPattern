@@ -127,7 +127,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
     public function paginate($perpage = 15, $columns = ['*'])
     {
         $this->applyCriteria();
-        $this->entity->paginate($perpage, $columns);
+        return $this->entity->paginate($perpage, $columns);
     }
 
     /** Insert a new entity on database

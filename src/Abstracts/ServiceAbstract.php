@@ -64,7 +64,7 @@ class ServiceAbstract implements ServiceContract {
     protected $db;
 
 
-    function __construct(RepositoryAbstract $ra, DatabaseManager $db)
+    function __construct(RepositoryContract $ra, DatabaseManager $db)
     {
         $this->Repository = $ra;
         $this->db = $db;
