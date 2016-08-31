@@ -123,6 +123,7 @@ abstract class RepositoryAbstract implements RepositoryContract, CriteriaContrac
     /** Paginates all objects from database, using the criterias on the stack.
      * @param int $perpage
      * @param array $columns
+     * @return LengthAwarePaginator
      */
     public function paginate($perpage = 15, $columns = ['*'])
     {
